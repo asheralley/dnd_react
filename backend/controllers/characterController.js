@@ -3,13 +3,13 @@ const asyncHandler = require('express-async-handler')
 const Character = require('../models/characterModel');
 const User = require('../models/userModel');
 
-// @desc    Get goals
-// @route   GET /api/goals
+// @desc    Get character
+// @route   GET /api/character
 // @access  Private
 const getCharacter = asyncHandler(async (req, res) => {
   const character = await Character.find({ user: req.user.id })
 
-  res.status(200).json(goals)
+  res.status(200).json(character)
 })
 
 // @desc    create chacter
@@ -26,11 +26,11 @@ const createCharacter = asyncHandler(async (req, res) => {
     user: req.user.id,
   })
 
-  res.status(200).json(goal)
+  res.status(200).json(character)
 })
 
 // @desc    Update character
-// @route   PUT /api/goals/:id
+// @route   PUT /api/character/:id
 // @access  Private
 const updateCharacter = asyncHandler(async (req, res) => {
   const character = await Character.findById(req.params.id)
@@ -56,18 +56,18 @@ const updateCharacter = asyncHandler(async (req, res) => {
     new: true,
   })
 
-  res.status(200).json(updatedGoal)
+  res.status(200).json(updatedCharacter)
 })
 
-// @desc    Delete goal
-// @route   DELETE /api/goals/:id
+// @desc    Delete character
+// @route   DELETE /api/character/:id
 // @access  Private
-const deleteGoal = asyncHandler(async (req, res) => {
-  const goal = await Goal.findById(req.params.id)
+const deleteCharacter = asyncHandler(async (req, res) => {
+  const character = await Character.findById(req.params.id)
 
-  if (!goal) {
+  if (!character) {
     res.status(400)
-    throw new Error('Goal not found')
+    throw new Error('Character not found')
   }
 
   // Check for user
@@ -77,19 +77,19 @@ const deleteGoal = asyncHandler(async (req, res) => {
   }
 
   // Make sure the logged in user matches the goal user
-  if (goal.user.toString() !== req.user.id) {
+  if (character.user.toString() !== req.user.id) {
     res.status(401)
     throw new Error('User not authorized')
   }
 
-  await goal.remove()
+  await chacter.remove()
 
   res.status(200).json({ id: req.params.id })
 })
 
 module.exports = {
-  getGoals,
-  setGoal,
-  updateGoal,
-  deleteGoal,
+  getCharacter,
+  createCharacter,
+  updateCharacter,
+  deleteCharacter,
 }
