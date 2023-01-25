@@ -1,0 +1,69 @@
+Character Database Schema
+
+Character {
+    race: <T>string,
+    class: <T>string,
+    subClass: <T>string,
+    mainStats: <T>Obj{
+        strength: <T>int,
+        dexterity: <T>int,
+        constitution: <T>int,
+        intelligence: <T>int,
+        wisdom: <T>int,
+        charisma: <T>int,
+    },
+    savingThrows : Array <T>Obj{
+        stat: <T>string,
+        throwBonus: <T>int,
+    },
+    feats: Array <T>Obj[
+        {
+            featName: <T>string,
+            description: <T>string,
+        },
+    ],
+    hp: <T>int,
+    tempHp: <T>int,
+    armourClass: <T>int,
+    deathSaves: <T>Obj{
+        Success: <T>int,
+        Fail: <T>int,
+    },
+    hitDice: <T>string,
+    currency: <T>Obj{
+        GP: <T>int,
+        SP: <T>int,
+        Plt: <T>int
+    },
+    abilitySlots: Array <T>Obj[
+        {
+            level: <T>string,
+            totalSlotNumber: <T>int,
+            used: <T>int,
+        },
+    ],
+    equipedItems: <T>Obj{
+            leftHand: <T>Item,
+            rightHand: <T>Item,
+            outfit: <T>Item,
+            misc: <T>Item,
+        },
+    inventory: Array <T>Item[],
+        
+}
+
+NOTE: Abstract Item to 'related' database?
+NOTE: seperate Item types for weapons/armour/misc?
+
+Item {
+    type: <T>string,
+    description: <T>string,
+    magic: <T>bool,
+    resistance: <T>string,
+    armour: <T>int,
+    ability: <T>string,
+    buff: <T>string,
+    damage: <T>string,
+    damageType: <T>string,
+}
+
