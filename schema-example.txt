@@ -53,7 +53,7 @@ Character {
 }
 
 NOTE: Abstract Item to 'related' database?
-NOTE: seperate Item types for weapons/armour/misc?
+NOTE: seperate Item types for weapons/armour/misc? or just not required fields?
 
 Item {
     type: <T>string,
