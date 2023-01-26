@@ -1,6 +1,8 @@
 Character Database Schema
 
 Character {
+    user: <T>mongooseSchemaObjectId,
+    characterName: <T>string,
     race: <T>string,
     class: <T>string,
     subClass: <T>string,
@@ -12,16 +14,14 @@ Character {
         wisdom: <T>int,
         charisma: <T>int,
     },
-    savingThrows : Array <T>Obj{
+    savingThrows: <T>Obj{
         stat: <T>string,
         throwBonus: <T>int,
     },
-    feats: Array <T>Obj[
-        {
-            featName: <T>string,
-            description: <T>string,
-        },
-    ],
+    feats: <T>Obj{
+        featName: <T>string,
+        description: <T>string,
+    },
     hp: <T>int,
     tempHp: <T>int,
     armourClass: <T>int,
@@ -30,18 +30,16 @@ Character {
         Fail: <T>int,
     },
     hitDice: <T>string,
-    currency: <T>Obj{
+    money: <T>Obj{
         GP: <T>int,
         SP: <T>int,
         Plt: <T>int
     },
-    abilitySlots: Array <T>Obj[
-        {
-            level: <T>string,
-            totalSlotNumber: <T>int,
-            used: <T>int,
-        },
-    ],
+    abilitySlots: <T>Obj{
+        level: <T>string,
+        totalSlotNumber: <T>int,
+        used: <T>int,
+    },
     equipedItems: <T>Obj{
             leftHand: <T>Item,
             rightHand: <T>Item,
@@ -49,7 +47,6 @@ Character {
             misc: <T>Item,
         },
     inventory: Array <T>Item[],
-        
 }
 
 NOTE: Abstract Item to 'related' database?
