@@ -43,11 +43,20 @@ const characterSchema = mongoose.Schema(
       successes: {type: Number},
       fails: {type: Number}
     },
-    abilitySlots: {
-      level: {type: String},
-      totalSlotNumber: {type: Number},
-      used: {type: Number},
-    },
+    abilitySlots: [
+      {
+        level: {type: String},
+        totalSlotNumber: {type: Number},
+        used: {type: Number},
+      }
+    ],
+    feats : [
+      {
+        name: String, //or number
+        description: String,
+        cooldown: String
+      }
+    ],
     money: {
       GP: {type: Number},
       SP: {type: Number},
